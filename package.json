@@ -9,7 +9,7 @@
   "author": "",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/Mobaitt/formula-builder.git"
   },
   "main": "dist/formula-builder.umd.cjs",
   "module": "dist/formula-builder.js",
