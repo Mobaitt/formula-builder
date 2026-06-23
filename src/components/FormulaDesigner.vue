@@ -1,6 +1,5 @@
 <template>
   <div class="formula-designer">
-    <!-- Top: Title Bar -->
     <div class="designer-header">
       <div class="header-left">
         <div class="designer-icon">
@@ -21,29 +20,22 @@
       </div>
     </div>
 
-    <!-- Middle: Three-column layout -->
     <div class="designer-body">
-      <!-- Left Panel: Variables + Functions -->
       <div class="left-panel panel-column">
         <VariablePanel />
         <FunctionPanel />
       </div>
-
-      <!-- Center Panel: Operators + Editor -->
       <div class="center-panel panel-column">
         <div class="editor-wrapper">
           <FormulaEditor />
         </div>
         <OperatorPanel />
       </div>
-
-      <!-- Right Panel: Output Config -->
       <div class="right-panel panel-column">
         <OutputConfigPanel />
       </div>
     </div>
 
-    <!-- Bottom: Preview -->
     <div class="designer-footer">
       <PreviewPanel />
     </div>
@@ -54,6 +46,7 @@
 import { onUnmounted } from 'vue'
 import { provideFormulaEditor } from '../composables/useFormulaEditor'
 import { resetIdCounter } from '../utils/token-utils'
+import type { DeviceNode, VariableItem } from '../types'
 import FormulaEditor from './FormulaEditor.vue'
 import FunctionPanel from './FunctionPanel.vue'
 import OperatorPanel from './OperatorPanel.vue'
@@ -61,7 +54,22 @@ import OutputConfigPanel from './OutputConfigPanel.vue'
 import PreviewPanel from './PreviewPanel.vue'
 import VariablePanel from './VariablePanel.vue'
 
-const context = provideFormulaEditor()
+export interface FormulaDesignerProps {
+  /** Structured device → variables tree. Overrides `variables` if provided. */
+  devices?: DeviceNode[]
+  /** Flat variable list — shown grouped under a single "自定义变量" node. Ignored if `devices` is set. */
+  variables?: VariableItem[]
+}
+
+const props = withDefaults(defineProps<FormulaDesignerProps>(), {
+  devices: undefined,
+  variables: undefined,
+})
+
+const context = provideFormulaEditor({
+  devices: props.devices,
+  variables: props.variables,
+})
 
 onUnmounted(() => {
   resetIdCounter()
@@ -80,7 +88,6 @@ onUnmounted(() => {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
-/* ===== Header ===== */
 .designer-header {
   display: flex;
   align-items: center;
@@ -91,114 +98,42 @@ onUnmounted(() => {
   flex-shrink: 0;
 }
 
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+.header-left { display: flex; align-items: center; gap: 10px; }
 
 .designer-icon {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
   background: linear-gradient(135deg, #409eff, #337ecc);
-  border-radius: 8px;
-  color: #fff;
+  border-radius: 8px; color: #fff;
 }
 
-.designer-icon svg {
-  width: 18px;
-  height: 18px;
-}
+.designer-icon svg { width: 18px; height: 18px; }
 
-.designer-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: #1a1a2e;
-}
+.designer-title { font-size: 15px; font-weight: 700; color: #1a1a2e; }
+.designer-subtitle { font-size: 11px; color: #8c8c8c; margin-top: 1px; }
+.header-actions { display: flex; align-items: center; gap: 8px; }
+.token-count-header { font-family: 'Courier New', monospace; }
 
-.designer-subtitle {
-  font-size: 11px;
-  color: #8c8c8c;
-  margin-top: 1px;
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.token-count-header {
-  font-family: 'Courier New', monospace;
-}
-
-/* ===== Body ===== */
 .designer-body {
-  display: flex;
-  flex: 1;
-  gap: 8px;
-  padding: 8px;
-  overflow: hidden;
-  min-height: 0;
+  display: flex; flex: 1; gap: 8px; padding: 8px;
+  overflow: hidden; min-height: 0;
 }
 
-.panel-column {
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-}
+.panel-column { display: flex; flex-direction: column; min-height: 0; }
 
-.left-panel {
-  width: 260px;
-  flex-shrink: 0;
-  gap: 8px;
-}
+.left-panel { width: 260px; flex-shrink: 0; gap: 8px; }
+.left-panel > .variable-panel { flex: 3; min-height: 0; }
+.left-panel > .function-panel { flex: 2; min-height: 0; }
 
-.left-panel > .variable-panel {
-  flex: 3;
-  min-height: 0;
-}
+.center-panel { flex: 1; min-width: 0; gap: 8px; overflow: visible; }
 
-.left-panel > .function-panel {
-  flex: 2;
-  min-height: 0;
-}
+.editor-wrapper { flex: 1; display: flex; min-height: 100px; }
+.editor-wrapper > .formula-editor { width: 100%; }
 
-.center-panel {
-  flex: 1;
-  min-width: 0;
-  gap: 8px;
-  overflow: visible;
-}
-
-.editor-wrapper {
-  flex: 1;
-  display: flex;
-  min-height: 100px;
-}
-
-.editor-wrapper > .formula-editor {
-  width: 100%;
-}
-
-.right-panel {
-  width: 260px;
-  flex-shrink: 0;
-}
-
+.right-panel { width: 260px; flex-shrink: 0; }
 .right-panel > .output-config-panel {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
+  flex: 1; display: flex; flex-direction: column; min-height: 0;
 }
 
-/* ===== Footer ===== */
-.designer-footer {
-  flex-shrink: 0;
-  padding: 0 8px 8px;
-}
+.designer-footer { flex-shrink: 0; padding: 0 8px 8px; }
 </style>

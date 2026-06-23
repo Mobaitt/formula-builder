@@ -66,24 +66,18 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { ElScrollbar, ElTag, ElTooltip } from 'element-plus'
-import type { DeviceNode, VariableItem } from '../types'
-import { BUILT_IN_DEVICES, BUILT_IN_VARIABLES } from '../types'
+import type { VariableItem } from '../types'
 import { injectFormulaEditor } from '../composables/useFormulaEditor'
 
 const context = injectFormulaEditor()
 const searchQuery = ref('')
-const expandedDevices = ref(new Set(BUILT_IN_DEVICES.map((d) => d.id)))
+const expandedDevices = ref(new Set(context.deviceList.value.map((d) => d.id)))
 
-const devices = computed<DeviceNode[]>(() => {
-  if (context.variables.value.length > 0) {
-    return [{ id: '_custom', label: '自定义变量', children: context.variables.value }]
-  }
-  return BUILT_IN_DEVICES
-})
+const devices = computed(() => context.deviceList.value)
 
 const flatFiltered = computed(() => {
   const q = searchQuery.value.trim().toLowerCase()
-  const all = context.variables.value.length > 0 ? context.variables.value : BUILT_IN_VARIABLES
+  const all = context.deviceList.value.flatMap((d) => d.children)
   return all.filter((v) => v.label.toLowerCase().includes(q) || v.name.toLowerCase().includes(q))
 })
 
