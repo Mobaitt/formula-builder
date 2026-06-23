@@ -4,6 +4,8 @@
 
 通过点击或拖拽变量、函数、运算符来构建公式，支持 Token 化编辑、拖拽排序、括号匹配、公式验证、JSON 导入/导出。
 
+**GitHub**: https://github.com/Mobaitt/formula-builder
+
 ## 安装
 
 ```bash

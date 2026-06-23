@@ -1,7 +1,7 @@
 {
   "name": "formula-builder",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "A low-code formula editor for Vue 3 — token-based, drag & drop, extensible.",
   "keywords": ["vue3", "formula", "editor", "low-code", "token", "element-plus"],
