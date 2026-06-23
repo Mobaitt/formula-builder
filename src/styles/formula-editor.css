@@ -1,0 +1,54 @@
+/* ===== Formula Designer Global Styles ===== */
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d0d5dd;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #98a2b3;
+}
+
+/* Element Plus overrides for compact layout */
+.el-card {
+  border-radius: 6px;
+}
+
+.el-tag {
+  font-family: inherit;
+}
+
+.el-form--label-top .el-form-item__label {
+  padding-bottom: 4px;
+  font-size: 12px;
+}
+
+.el-input-number--small {
+  width: 100%;
+}
+
+.el-input-number--small .el-input-number__decrease,
+.el-input-number--small .el-input-number__increase {
+  width: 24px;
+}
+
+/* Transition for panel show/hide */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
