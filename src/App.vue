@@ -20,7 +20,7 @@ html, body, #app {
 
 .app-container {
   height: 100vh;
-  padding: 16px;
+  padding: 4px;
   box-sizing: border-box;
   background: linear-gradient(135deg, #e8edf5 0%, #f0f2f5 100%);
 }

@@ -57,9 +57,6 @@
             <span class="bracket-text">{{ token.value }}</span>
           </template>
         </span>
-
-        <!-- Cursor after token -->
-        <span v-if="context.cursorPos.value === idx + 1" class="cursor-blink" />
       </template>
 
       <!-- Drop indicator at end -->

@@ -75,7 +75,7 @@ onUnmounted(() => {
   height: 100%;
   min-height: 600px;
   background: #f0f2f5;
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
@@ -85,7 +85,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 20px;
+  padding: 10px 16px;
   background: #fff;
   border-bottom: 1px solid #e8eaed;
   flex-shrink: 0;
@@ -94,29 +94,33 @@ onUnmounted(() => {
 .header-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .designer-icon {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #409eff, #337ecc);
-  border-radius: 10px;
+  border-radius: 8px;
   color: #fff;
 }
 
+.designer-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
 .designer-title {
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 700;
   color: #1a1a2e;
-  letter-spacing: 0.3px;
 }
 
 .designer-subtitle {
-  font-size: 12px;
+  font-size: 11px;
   color: #8c8c8c;
   margin-top: 1px;
 }
@@ -135,8 +139,8 @@ onUnmounted(() => {
 .designer-body {
   display: flex;
   flex: 1;
-  gap: 12px;
-  padding: 12px;
+  gap: 8px;
+  padding: 8px;
   overflow: hidden;
   min-height: 0;
 }
@@ -144,26 +148,36 @@ onUnmounted(() => {
 .panel-column {
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  min-height: 0;
 }
 
 .left-panel {
-  width: 230px;
+  width: 260px;
   flex-shrink: 0;
-  gap: 10px;
+  gap: 8px;
+}
+
+.left-panel > .variable-panel {
+  flex: 3;
+  min-height: 0;
+}
+
+.left-panel > .function-panel {
+  flex: 2;
+  min-height: 0;
 }
 
 .center-panel {
   flex: 1;
   min-width: 0;
-  gap: 10px;
+  gap: 8px;
   overflow: visible;
 }
 
 .editor-wrapper {
   flex: 1;
   display: flex;
-  min-height: 120px;
+  min-height: 100px;
 }
 
 .editor-wrapper > .formula-editor {
@@ -171,13 +185,20 @@ onUnmounted(() => {
 }
 
 .right-panel {
-  width: 230px;
+  width: 260px;
   flex-shrink: 0;
+}
+
+.right-panel > .output-config-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 /* ===== Footer ===== */
 .designer-footer {
   flex-shrink: 0;
-  padding: 0 12px 12px;
+  padding: 0 8px 8px;
 }
 </style>

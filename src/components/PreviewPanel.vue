@@ -3,9 +3,16 @@
     <div class="preview-inner">
       <div class="preview-section">
         <div class="preview-section-label">表达式</div>
-        <div class="preview-expression">
-          <code><template v-if="context.expression.value">{{ context.expression.value }}</template><template v-else><span class="expr-placeholder">（空公式）</span></template></code>
-        </div>
+        <el-tooltip
+          :content="context.expression.value || ''"
+          placement="top"
+          :show-after="300"
+          :disabled="!context.expression.value || context.expression.value.length < 30"
+        >
+          <div class="preview-expression">
+            <code><template v-if="context.expression.value">{{ context.expression.value }}</template><template v-else><span class="expr-placeholder">（空公式）</span></template></code>
+          </div>
+        </el-tooltip>
       </div>
 
       <div class="preview-divider" />
@@ -48,7 +55,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { ElMessage } from 'element-plus'
+import { ElMessage, ElTooltip } from 'element-plus'
 import { injectFormulaEditor } from '../composables/useFormulaEditor'
 import type { FormulaSaveData } from '../types'
 
@@ -57,9 +64,7 @@ const fileInputRef = ref<HTMLInputElement | null>(null)
 
 function handleExport() {
   const data = context.getSaveData()
-  const blob = new Blob([JSON.stringify(data, null, 2)], {
-    type: 'application/json',
-  })
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
   a.href = url
@@ -77,7 +82,6 @@ function handleFileSelected(event: Event) {
   const input = event.target as HTMLInputElement
   const file = input.files?.[0]
   if (!file) return
-
   const reader = new FileReader()
   reader.onload = (e) => {
     try {
@@ -127,7 +131,8 @@ function handleFileSelected(event: Event) {
   padding: 4px 10px;
   background: #f5f7fa;
   border-radius: 4px;
-  overflow-x: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
   font-family: 'Courier New', Courier, monospace;
   color: #303133;
@@ -169,13 +174,8 @@ function handleFileSelected(event: Event) {
   box-shadow: 0 0 4px rgba(245, 108, 108, 0.4);
 }
 
-.text-success {
-  color: #67c23a;
-}
-
-.text-error {
-  color: #f56c6c;
-}
+.text-success { color: #67c23a; }
+.text-error { color: #f56c6c; }
 
 .actions-section {
   flex: 0 0 auto;
@@ -200,34 +200,10 @@ function handleFileSelected(event: Event) {
   white-space: nowrap;
 }
 
-.action-btn:hover {
-  border-color: #c0c4cc;
-  background: #f5f7fa;
-}
-
-.action-btn.primary {
-  color: #409eff;
-  border-color: #d9ecff;
-  background: #ecf5ff;
-}
-
-.action-btn.primary:hover {
-  background: #d9ecff;
-  border-color: #a0cfff;
-}
-
-.action-btn.danger {
-  color: #f56c6c;
-  border-color: #fde2e2;
-  background: #fef0f0;
-}
-
-.action-btn.danger:hover {
-  background: #fde2e2;
-  border-color: #fab6b6;
-}
-
-.action-btn svg {
-  flex-shrink: 0;
-}
+.action-btn:hover { border-color: #c0c4cc; background: #f5f7fa; }
+.action-btn.primary { color: #409eff; border-color: #d9ecff; background: #ecf5ff; }
+.action-btn.primary:hover { background: #d9ecff; border-color: #a0cfff; }
+.action-btn.danger { color: #f56c6c; border-color: #fde2e2; background: #fef0f0; }
+.action-btn.danger:hover { background: #fde2e2; border-color: #fab6b6; }
+.action-btn svg { flex-shrink: 0; }
 </style>

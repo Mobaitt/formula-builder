@@ -94,6 +94,9 @@ const previewText = computed(() => {
 
 <style scoped>
 .output-config-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
   background: #fff;
   border: 1px solid #e8eaed;
   border-radius: 8px;
@@ -110,10 +113,14 @@ const previewText = computed(() => {
   color: #303133;
   border-bottom: 1px solid #f0f0f0;
   background: #fafbfc;
+  flex-shrink: 0;
 }
 
 .config-body {
+  flex: 1;
   padding: 12px 14px;
+  overflow-y: auto;
+  min-height: 0;
 }
 
 .config-item {
