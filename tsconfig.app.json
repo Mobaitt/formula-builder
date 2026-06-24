@@ -4,6 +4,13 @@
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "types": ["vite/client"],
 
+    /* 声明文件生成 */
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "rootDir": "./src",
+    "declarationDir": "./dist",
+
     /* Linting */
     "noUnusedLocals": true,
     "noUnusedParameters": true,
