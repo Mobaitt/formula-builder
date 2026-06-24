@@ -97,8 +97,8 @@ const previewText = computed(() => {
   display: flex;
   flex-direction: column;
   min-height: 0;
-  background: #fff;
-  border: 1px solid #e8eaed;
+  background: var(--el-bg-color);
+  border: 1px solid var(--el-border-color-light);
   border-radius: 8px;
   overflow: hidden;
 }
@@ -110,9 +110,9 @@ const previewText = computed(() => {
   padding: 10px 14px;
   font-size: 13px;
   font-weight: 600;
-  color: #303133;
-  border-bottom: 1px solid #f0f0f0;
-  background: #fafbfc;
+  color: var(--el-text-color-primary);
+  border-bottom: 1px solid var(--el-border-color-lighter);
+  background: var(--el-fill-color-light);
   flex-shrink: 0;
 }
 
@@ -134,7 +134,7 @@ const previewText = computed(() => {
 .config-label {
   display: block;
   font-size: 12px;
-  color: #909399;
+  color: var(--el-text-color-secondary);
   margin-bottom: 4px;
   font-weight: 500;
 }
@@ -145,7 +145,7 @@ const previewText = computed(() => {
 
 .config-divider {
   height: 1px;
-  background: #f0f0f0;
+  background: var(--el-border-color-lighter);
   margin: 12px 0;
 }
 
@@ -155,7 +155,7 @@ const previewText = computed(() => {
 
 .preview-label {
   font-size: 11px;
-  color: #c0c4cc;
+  color: var(--el-text-color-placeholder);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 6px;
@@ -165,10 +165,10 @@ const previewText = computed(() => {
   font-size: 18px;
   font-weight: 700;
   font-family: 'Courier New', Courier, monospace;
-  color: #409eff;
+  color: var(--el-color-primary);
   word-break: break-all;
   padding: 8px 0;
-  background: #fafbfc;
+  background: var(--el-fill-color-light);
   border-radius: 4px;
 }
 </style>

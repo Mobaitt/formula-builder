@@ -65,12 +65,90 @@ const variables: VariableItem[] = [
 </template>
 ```
 
+### 配置操作按钮
+
+使用 `actions` prop 统一控制底部按钮：改名、隐藏、追加自定义按钮，一个 prop 搞定。
+
+```vue
+<script setup lang="ts">
+import FormulaDesigner from 'formula-builder'
+import type { ActionsConfig } from 'formula-builder'
+
+const actions: ActionsConfig = {
+  // 改内置按钮的名字
+  export: { label: '下载' },
+  import: { label: '上传' },
+  clear: { label: '重置' },
+  // 隐藏不需要的内置按钮
+  // export: { hidden: true },
+  // 追加自定义按钮
+  append: [
+    {
+      label: '保存',
+      type: 'primary',
+      onClick: () => {
+        // 自行处理保存逻辑
+      },
+    },
+  ],
+}
+</script>
+
+<template>
+  <FormulaDesigner :actions="actions" />
+</template>
+```
+```
+
+### 通过 ref 调用方法
+
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+import FormulaDesigner from 'formula-builder'
+import type { FormulaSaveData } from 'formula-builder'
+
+const designerRef = ref<InstanceType<typeof FormulaDesigner>>()
+
+function handleSave() {
+  const data = designerRef.value?.getSaveData()
+  console.log(data) // { tokens, expression, outputConfig }
+}
+
+function handleRestore() {
+  designerRef.value?.importFormula(savedData)
+}
+
+function handleClear() {
+  designerRef.value?.clearAll()
+}
+</script>
+
+<template>
+  <FormulaDesigner ref="designerRef" />
+</template>
+```
+
+## 暗黑模式
+
+组件使用 Element Plus 的 CSS 变量编写，已完整适配暗黑模式。只需在项目中按 Element Plus 文档启用暗黑模式即可：
+
+```ts
+import 'element-plus/theme-chalk/dark/css-vars.css'
+
+// 切换暗黑模式
+document.documentElement.classList.toggle('dark')
+```
+
+组件会自动跟随主题变化，无需额外配置。
+
 ## Props
 
 | 属性 | 类型 | 默认 | 说明 |
 |------|------|------|------|
 | `devices` | `DeviceNode[]` | 内置示例 | 设备 → 变量树形结构 |
 | `variables` | `VariableItem[]` | — | 扁平变量列表（当 `devices` 未设置时生效） |
+| `actions` | `ActionsConfig` | — | 配置操作按钮：改名、隐藏、追加自定义按钮 |
 
 不传 props 时使用内置的 4 组设备共 12 个变量 + 7 个函数。
 
@@ -144,6 +222,41 @@ interface OutputConfig {
 }
 
 type FormulaToken = VariableToken | FunctionToken | OperatorToken | NumberToken | BracketToken
+
+interface FormulaSaveData {
+  tokens: FormulaToken[]
+  expression: string
+  outputConfig: OutputConfig
+}
+
+interface ButtonLabels {
+  export?: string   // 默认 "导出"
+  import?: string   // 默认 "导入"
+  clear?: string    // 默认 "清空"
+}
+
+interface HideActions {
+  export?: boolean  // 设为 true 隐藏导出按钮
+  import?: boolean  // 设为 true 隐藏导入按钮
+  clear?: boolean   // 设为 true 隐藏清空按钮
+}
+
+interface ActionButton {
+  label: string
+  type?: 'default' | 'primary' | 'danger'
+  onClick: () => void
+}
+
+interface ActionsConfig {
+  /** 配置导出按钮 */
+  export?: { label?: string; hidden?: boolean }
+  /** 配置导入按钮 */
+  import?: { label?: string; hidden?: boolean }
+  /** 配置清空按钮 */
+  clear?: { label?: string; hidden?: boolean }
+  /** 追加自定义按钮 */
+  append?: ActionButton[]
+}
 ```
 
 ## 开发

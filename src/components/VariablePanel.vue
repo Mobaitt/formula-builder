@@ -99,8 +99,8 @@ function onDragStart(event: DragEvent, v: VariableItem) {
   display: flex;
   flex-direction: column;
   min-height: 0;
-  background: #fff;
-  border: 1px solid #e8eaed;
+  background: var(--el-bg-color);
+  border: 1px solid var(--el-border-color-light);
   border-radius: 8px;
   overflow: hidden;
 }
@@ -117,9 +117,9 @@ function onDragStart(event: DragEvent, v: VariableItem) {
   display: flex;
   align-items: center;
   gap: 6px;
-  color: #303133;
-  border-bottom: 1px solid #f0f0f0;
-  background: #fafbfc;
+  color: var(--el-text-color-primary);
+  border-bottom: 1px solid var(--el-border-color-lighter);
+  background: var(--el-fill-color-light);
   flex-shrink: 0;
 }
 
@@ -141,23 +141,23 @@ function onDragStart(event: DragEvent, v: VariableItem) {
   width: 100%;
   height: 28px;
   padding: 0 10px 0 28px;
-  border: 1px solid #e4e7ed;
+  border: 1px solid var(--el-border-color-light);
   border-radius: 4px;
   font-size: 12px;
-  color: #303133;
+  color: var(--el-text-color-primary);
   outline: none;
-  background: #f5f7fa;
+  background: var(--el-fill-color-lighter);
   transition: border-color 0.15s, background 0.15s;
   box-sizing: border-box;
 }
 
 .search-input:focus {
-  border-color: #409eff;
-  background: #fff;
+  border-color: var(--el-color-primary);
+  background: var(--el-bg-color);
 }
 
 .search-input::placeholder {
-  color: #c0c4cc;
+  color: var(--el-text-color-placeholder);
 }
 
 /* ===== Device Header ===== */
@@ -168,22 +168,22 @@ function onDragStart(event: DragEvent, v: VariableItem) {
   padding: 7px 12px;
   cursor: pointer;
   user-select: none;
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 1px solid var(--el-border-color-extra-light);
   transition: background 0.1s;
   position: sticky;
   top: 0;
   z-index: 1;
-  background: #fafbfc;
+  background: var(--el-fill-color-light);
   min-width: 0;
 }
 
 .device-header:hover {
-  background: #eef1f6;
+  background: var(--el-fill-color);
 }
 
 .device-arrow {
   flex-shrink: 0;
-  color: #909399;
+  color: var(--el-text-color-secondary);
   transition: transform 0.15s;
 }
 
@@ -194,7 +194,7 @@ function onDragStart(event: DragEvent, v: VariableItem) {
 .device-label {
   font-size: 12px;
   font-weight: 600;
-  color: #303133;
+  color: var(--el-text-color-primary);
   flex: 1;
   min-width: 0;
   overflow: hidden;
@@ -204,8 +204,8 @@ function onDragStart(event: DragEvent, v: VariableItem) {
 
 .device-count {
   font-size: 10px;
-  color: #c0c4cc;
-  background: #f0f0f0;
+  color: var(--el-text-color-placeholder);
+  background: var(--el-fill-color);
   padding: 0 6px;
   border-radius: 8px;
   line-height: 16px;
@@ -226,13 +226,13 @@ function onDragStart(event: DragEvent, v: VariableItem) {
 }
 
 .variable-item:hover {
-  background-color: #ecf5ff;
-  border-left-color: #409eff;
+  background-color: var(--el-color-primary-light-9);
+  border-left-color: var(--el-color-primary);
 }
 
 .variable-item:active {
   cursor: grabbing;
-  background-color: #d9ecff;
+  background-color: var(--el-color-primary-light-8);
 }
 
 .variable-tag {
@@ -252,7 +252,7 @@ function onDragStart(event: DragEvent, v: VariableItem) {
 
 .variable-name-tag {
   font-size: 11px;
-  color: #c0c4cc;
+  color: var(--el-text-color-placeholder);
   font-family: 'Courier New', Courier, monospace;
   min-width: 0;
   flex: 0 1 auto;
@@ -263,7 +263,7 @@ function onDragStart(event: DragEvent, v: VariableItem) {
 
 .variable-unit {
   font-size: 11px;
-  color: #c0c4cc;
+  color: var(--el-text-color-placeholder);
   flex-shrink: 0;
   margin-left: auto;
 }
@@ -277,6 +277,6 @@ function onDragStart(event: DragEvent, v: VariableItem) {
   text-align: center;
   padding: 20px;
   font-size: 12px;
-  color: #c0c4cc;
+  color: var(--el-text-color-placeholder);
 }
 </style>

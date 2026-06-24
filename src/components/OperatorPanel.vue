@@ -48,8 +48,8 @@ function insertOp(op: string) {
 
 <style scoped>
 .operator-panel {
-  background: #fff;
-  border: 1px solid #e8eaed;
+  background: var(--el-bg-color);
+  border: 1px solid var(--el-border-color-light);
   border-radius: 8px;
   overflow: hidden;
   flex-shrink: 0;
@@ -62,9 +62,9 @@ function insertOp(op: string) {
   padding: 10px 14px;
   font-size: 13px;
   font-weight: 600;
-  color: #303133;
-  border-bottom: 1px solid #f0f0f0;
-  background: #fafbfc;
+  color: var(--el-text-color-primary);
+  border-bottom: 1px solid var(--el-border-color-lighter);
+  background: var(--el-fill-color-light);
 }
 
 .operator-groups {
@@ -79,7 +79,7 @@ function insertOp(op: string) {
 
 .op-group-label {
   font-size: 11px;
-  color: #c0c4cc;
+  color: var(--el-text-color-placeholder);
   white-space: nowrap;
   min-width: 32px;
   font-weight: 500;
@@ -98,10 +98,10 @@ function insertOp(op: string) {
   min-width: 32px;
   height: 28px;
   padding: 0 6px;
-  border: 1px solid #e4e7ed;
+  border: 1px solid var(--el-border-color-light);
   border-radius: 4px;
-  background: #fafbfc;
-  color: #606266;
+  background: var(--el-fill-color-light);
+  color: var(--el-text-color-regular);
   font-family: 'Courier New', Courier, monospace;
   font-size: 13px;
   font-weight: 700;
@@ -112,23 +112,23 @@ function insertOp(op: string) {
 }
 
 .op-btn:hover {
-  border-color: #409eff;
-  color: #409eff;
-  background: #ecf5ff;
+  border-color: var(--el-color-primary);
+  color: var(--el-color-primary);
+  background: var(--el-color-primary-light-9);
 }
 
 .op-btn:active {
-  background: #d9ecff;
+  background: var(--el-color-primary-light-8);
   transform: scale(0.95);
 }
 
 .bracket-btn {
   font-weight: 600;
-  color: #909399;
+  color: var(--el-text-color-secondary);
 }
 
 .bracket-btn:hover {
-  color: #409eff;
+  color: var(--el-color-primary);
 }
 
 .comma-btn {
@@ -137,7 +137,7 @@ function insertOp(op: string) {
 
 .op-divider {
   height: 1px;
-  background: #f0f0f0;
+  background: var(--el-border-color-lighter);
   margin: 6px 0;
 }
 </style>

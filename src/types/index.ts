@@ -193,3 +193,22 @@ export const OPERATORS: string[] = [
 ]
 
 export const BRACKETS: string[] = ['(', ')']
+
+/* ===== Actions Config ===== */
+
+export interface ActionButton {
+  label: string
+  type?: 'default' | 'primary' | 'danger'
+  onClick: () => void
+}
+
+export interface ActionsConfig {
+  /** Configure the built-in export button */
+  export?: { label?: string; hidden?: boolean }
+  /** Configure the built-in import button */
+  import?: { label?: string; hidden?: boolean }
+  /** Configure the built-in clear button */
+  clear?: { label?: string; hidden?: boolean }
+  /** Extra buttons appended after the built-in ones */
+  append?: ActionButton[]
+}

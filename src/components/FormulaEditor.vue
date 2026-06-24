@@ -564,21 +564,21 @@ function handleDrop(e: DragEvent) {
   display: flex;
   flex-direction: column;
   min-height: 160px;
-  border: 1px solid #d9dce0;
+  border: 1px solid var(--el-border-color);
   border-radius: 8px;
-  background: #fff;
+  background: var(--el-bg-color);
   transition: border-color 0.2s, box-shadow 0.2s;
   cursor: text;
 }
 
 .formula-editor:hover {
-  border-color: #409eff;
-  box-shadow: 0 0 0 1px rgba(64, 158, 255, 0.1);
+  border-color: var(--el-color-primary);
+  box-shadow: 0 0 0 1px var(--el-color-primary-light-7);
 }
 
 .formula-editor.is-focused {
-  border-color: #409eff;
-  box-shadow: 0 0 0 2px rgba(64, 158, 255, 0.15);
+  border-color: var(--el-color-primary);
+  box-shadow: 0 0 0 2px var(--el-color-primary-light-7);
 }
 
 .formula-editor.is-empty {
@@ -591,7 +591,7 @@ function handleDrop(e: DragEvent) {
   align-items: center;
   justify-content: space-between;
   padding: 8px 14px;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--el-border-color-lighter);
   flex-shrink: 0;
   user-select: none;
 }
@@ -599,14 +599,14 @@ function handleDrop(e: DragEvent) {
 .toolbar-title {
   font-size: 12px;
   font-weight: 600;
-  color: #303133;
+  color: var(--el-text-color-primary);
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
 
 .toolbar-hint {
   font-size: 11px;
-  color: #c0c4cc;
+  color: var(--el-text-color-placeholder);
 }
 
 /* ===== Editor Content ===== */
@@ -622,10 +622,6 @@ function handleDrop(e: DragEvent) {
   align-content: flex-start;
 }
 
-.editor-content.is-empty-content {
-  /* Hint text via CSS pseudo-element */
-}
-
 .editor-content.is-empty-content::before {
   content: '点击左侧变量 / 函数插入，或直接键盘输入数字和运算符';
   position: absolute;
@@ -633,7 +629,7 @@ function handleDrop(e: DragEvent) {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 13px;
-  color: #c0c4cc;
+  color: var(--el-text-color-placeholder);
   pointer-events: none;
   text-align: center;
   line-height: 1.6;
@@ -641,7 +637,6 @@ function handleDrop(e: DragEvent) {
   white-space: nowrap;
 }
 
-/* ===== Empty State ===== */
 /* ===== Tokens ===== */
 .token {
   display: inline-flex;
@@ -676,16 +671,16 @@ function handleDrop(e: DragEvent) {
 
 /* Variable token */
 .token-variable {
-  background: #ecf5ff;
-  color: #409eff;
-  border: 1px solid #d9ecff;
+  background: var(--el-color-primary-light-9);
+  color: var(--el-color-primary);
+  border: 1px solid var(--el-color-primary-light-8);
   font-weight: 600;
   border-radius: 3px;
 }
 
 .token-variable:hover {
-  background: #d9ecff;
-  border-color: #a0cfff;
+  background: var(--el-color-primary-light-8);
+  border-color: var(--el-color-primary-light-5);
 }
 
 .token-variable .token-bracket {
@@ -695,9 +690,9 @@ function handleDrop(e: DragEvent) {
 
 /* Function token */
 .token-function {
-  background: #f0f9eb;
-  color: #67c23a;
-  border: 1px solid #e1f3d8;
+  background: var(--el-color-success-light-9);
+  color: var(--el-color-success);
+  border: 1px solid var(--el-color-success-light-8);
   font-weight: 700;
   text-transform: uppercase;
   font-size: 12px;
@@ -706,8 +701,8 @@ function handleDrop(e: DragEvent) {
 }
 
 .token-function:hover {
-  background: #e1f3d8;
-  border-color: #b3e19d;
+  background: var(--el-color-success-light-8);
+  border-color: var(--el-color-success-light-5);
 }
 
 .token-function .fn-paren {
@@ -718,7 +713,7 @@ function handleDrop(e: DragEvent) {
 /* Operator token */
 .token-operator {
   background: transparent;
-  color: #606266;
+  color: var(--el-text-color-regular);
   padding: 2px 2px;
   font-weight: 700;
   font-size: 14px;
@@ -733,22 +728,22 @@ function handleDrop(e: DragEvent) {
 
 /* Number token */
 .token-number {
-  background: #fdf6ec;
-  color: #e6a23c;
-  border: 1px solid #faecd8;
+  background: var(--el-color-warning-light-9);
+  color: var(--el-color-warning);
+  border: 1px solid var(--el-color-warning-light-8);
   font-weight: 600;
   border-radius: 3px;
 }
 
 .token-number:hover {
-  background: #faecd8;
-  border-color: #f3d19e;
+  background: var(--el-color-warning-light-8);
+  border-color: var(--el-color-warning-light-5);
 }
 
 /* Bracket token */
 .token-bracket {
   background: transparent;
-  color: #909399;
+  color: var(--el-text-color-secondary);
   padding: 2px 1px;
   font-weight: 600;
   font-size: 15px;
@@ -763,7 +758,7 @@ function handleDrop(e: DragEvent) {
 
 /* Bracket matching highlight */
 .token.bracket-match {
-  box-shadow: 0 0 0 2px #f56c6c !important;
+  box-shadow: 0 0 0 2px var(--el-color-danger) !important;
   border-radius: 4px;
   animation: bracket-pulse 1s ease-in-out infinite alternate;
   z-index: 2;
@@ -771,10 +766,10 @@ function handleDrop(e: DragEvent) {
 
 @keyframes bracket-pulse {
   from {
-    box-shadow: 0 0 0 2px #f56c6c;
+    box-shadow: 0 0 0 2px var(--el-color-danger);
   }
   to {
-    box-shadow: 0 0 0 3px #f56c6c, 0 0 8px rgba(245, 108, 108, 0.25);
+    box-shadow: 0 0 0 3px var(--el-color-danger), 0 0 8px var(--el-color-danger-light-5);
   }
 }
 
@@ -783,7 +778,7 @@ function handleDrop(e: DragEvent) {
   display: inline-block;
   width: 2px;
   height: 22px;
-  background: #409eff;
+  background: var(--el-color-primary);
   animation: cursorBlink 1s step-end infinite;
   vertical-align: middle;
   flex-shrink: 0;
@@ -800,7 +795,7 @@ function handleDrop(e: DragEvent) {
   display: inline-block;
   width: 3px;
   height: 28px;
-  background: #409eff;
+  background: var(--el-color-primary);
   border-radius: 2px;
   flex-shrink: 0;
   animation: dropPulse 0.5s ease-in-out infinite alternate;
@@ -828,8 +823,8 @@ function handleDrop(e: DragEvent) {
 .context-menu {
   position: fixed;
   z-index: 9999;
-  background: #fff;
-  border: 1px solid #e4e7ed;
+  background: var(--el-bg-color);
+  border: 1px solid var(--el-border-color-light);
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
   padding: 4px;
@@ -843,7 +838,7 @@ function handleDrop(e: DragEvent) {
   gap: 8px;
   padding: 7px 12px;
   font-size: 13px;
-  color: #606266;
+  color: var(--el-text-color-regular);
   cursor: pointer;
   border-radius: 4px;
   transition: all 0.12s;
@@ -851,8 +846,8 @@ function handleDrop(e: DragEvent) {
 }
 
 .context-menu-item:hover {
-  background: #ecf5ff;
-  color: #409eff;
+  background: var(--el-color-primary-light-9);
+  color: var(--el-color-primary);
 }
 
 .context-menu-item svg {

@@ -4,6 +4,8 @@ export default FormulaDesigner
 export type { FormulaEditorContext, FormulaEditorOptions } from '../composables/useFormulaEditor'
 export { injectFormulaEditor, provideFormulaEditor } from '../composables/useFormulaEditor'
 export type {
+  ActionButton,
+  ActionsConfig,
   BaseToken,
   BracketToken,
   DeviceNode,

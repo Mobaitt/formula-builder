@@ -80,8 +80,8 @@ const filteredFunctions = computed(() => {
   display: flex;
   flex-direction: column;
   min-height: 0;
-  background: #fff;
-  border: 1px solid #e8eaed;
+  background: var(--el-bg-color);
+  border: 1px solid var(--el-border-color-light);
   border-radius: 8px;
   overflow: hidden;
 }
@@ -98,9 +98,9 @@ const filteredFunctions = computed(() => {
   padding: 9px 14px;
   font-size: 13px;
   font-weight: 600;
-  color: #303133;
-  border-bottom: 1px solid #f0f0f0;
-  background: #fafbfc;
+  color: var(--el-text-color-primary);
+  border-bottom: 1px solid var(--el-border-color-lighter);
+  background: var(--el-fill-color-light);
   flex-shrink: 0;
 }
 
@@ -122,23 +122,23 @@ const filteredFunctions = computed(() => {
   width: 100%;
   height: 28px;
   padding: 0 10px 0 28px;
-  border: 1px solid #e4e7ed;
+  border: 1px solid var(--el-border-color-light);
   border-radius: 4px;
   font-size: 12px;
-  color: #303133;
+  color: var(--el-text-color-primary);
   outline: none;
-  background: #f5f7fa;
+  background: var(--el-fill-color-lighter);
   transition: border-color 0.15s, background 0.15s;
   box-sizing: border-box;
 }
 
 .search-input:focus {
-  border-color: #67c23a;
-  background: #fff;
+  border-color: var(--el-color-success);
+  background: var(--el-bg-color);
 }
 
 .search-input::placeholder {
-  color: #c0c4cc;
+  color: var(--el-text-color-placeholder);
 }
 
 .function-item {
@@ -154,12 +154,12 @@ const filteredFunctions = computed(() => {
 }
 
 .function-item:hover {
-  background-color: #f0f9eb;
-  border-left-color: #67c23a;
+  background-color: var(--el-color-success-light-9);
+  border-left-color: var(--el-color-success);
 }
 
 .function-item:active {
-  background-color: #e1f3d8;
+  background-color: var(--el-color-success-light-8);
 }
 
 .function-tag {
@@ -174,20 +174,20 @@ const filteredFunctions = computed(() => {
 .function-parenthesis {
   font-family: 'Courier New', Courier, monospace;
   font-size: 12px;
-  color: #909399;
+  color: var(--el-text-color-secondary);
   font-weight: 600;
   flex-shrink: 0;
 }
 
 .function-args {
   font-size: 11px;
-  color: #c0c4cc;
+  color: var(--el-text-color-placeholder);
   flex-shrink: 0;
 }
 
 .function-desc {
   font-size: 11px;
-  color: #c0c4cc;
+  color: var(--el-text-color-placeholder);
   margin-left: auto;
   min-width: 0;
   overflow: hidden;
@@ -203,8 +203,8 @@ const filteredFunctions = computed(() => {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #e4e7ed;
-  color: #909399;
+  background: var(--el-border-color-darker);
+  color: var(--el-text-color-secondary);
   font-size: 10px;
   font-weight: 700;
   cursor: pointer;
@@ -214,7 +214,7 @@ const filteredFunctions = computed(() => {
 }
 
 .fn-help-icon:hover {
-  background: #67c23a;
+  background: var(--el-color-success);
   color: #fff;
 }
 </style>
@@ -233,7 +233,7 @@ const filteredFunctions = computed(() => {
 .fn-help-name {
   font-size: 15px;
   font-weight: 700;
-  color: #67c23a;
+  color: var(--el-color-success);
   margin-bottom: 10px;
   font-family: 'Courier New', Courier, monospace;
 }
@@ -249,7 +249,7 @@ const filteredFunctions = computed(() => {
 .fn-help-label {
   display: block;
   font-size: 10px;
-  color: #c0c4cc;
+  color: var(--el-text-color-placeholder);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-weight: 600;
@@ -259,26 +259,26 @@ const filteredFunctions = computed(() => {
 .fn-help-signature {
   display: block;
   padding: 4px 8px;
-  background: #f5f7fa;
+  background: var(--el-fill-color-lighter);
   border-radius: 4px;
   font-family: 'Courier New', Courier, monospace;
   font-size: 12px;
-  color: #303133;
+  color: var(--el-text-color-primary);
 }
 
 .fn-help-text {
   display: block;
   font-size: 12px;
-  color: #606266;
+  color: var(--el-text-color-regular);
 }
 
 .fn-help-example {
   display: block;
   padding: 4px 8px;
-  background: #f0f9eb;
+  background: var(--el-color-success-light-9);
   border-radius: 4px;
   font-family: 'Courier New', Courier, monospace;
   font-size: 12px;
-  color: #67c23a;
+  color: var(--el-color-success);
 }
 </style>

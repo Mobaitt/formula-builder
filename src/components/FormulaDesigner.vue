@@ -37,7 +37,7 @@
     </div>
 
     <div class="designer-footer">
-      <PreviewPanel />
+      <PreviewPanel :actions="actions" />
     </div>
   </div>
 </template>
@@ -46,7 +46,7 @@
 import { onUnmounted } from 'vue'
 import { provideFormulaEditor } from '../composables/useFormulaEditor'
 import { resetIdCounter } from '../utils/token-utils'
-import type { DeviceNode, VariableItem } from '../types'
+import type { ActionsConfig, DeviceNode, FormulaSaveData, FormulaToken, OutputConfig, VariableItem } from '../types'
 import FormulaEditor from './FormulaEditor.vue'
 import FunctionPanel from './FunctionPanel.vue'
 import OperatorPanel from './OperatorPanel.vue'
@@ -59,11 +59,14 @@ export interface FormulaDesignerProps {
   devices?: DeviceNode[]
   /** Flat variable list — shown grouped under a single "自定义变量" node. Ignored if `devices` is set. */
   variables?: VariableItem[]
+  /** Configure action buttons: rename, hide, or append custom buttons. */
+  actions?: ActionsConfig
 }
 
 const props = withDefaults(defineProps<FormulaDesignerProps>(), {
   devices: undefined,
   variables: undefined,
+  actions: undefined,
 })
 
 const context = provideFormulaEditor({
@@ -74,6 +77,23 @@ const context = provideFormulaEditor({
 onUnmounted(() => {
   resetIdCounter()
 })
+
+/** 获取当前公式的完整保存数据（tokens + expression + outputConfig） */
+function getSaveData(): FormulaSaveData {
+  return context.getSaveData()
+}
+
+/** 导入公式数据 */
+function importFormula(data: { tokens: FormulaToken[]; outputConfig?: OutputConfig }) {
+  context.importFormula(data)
+}
+
+/** 清空所有 Token */
+function clearAll() {
+  context.clearAll()
+}
+
+defineExpose({ getSaveData, importFormula, clearAll })
 </script>
 
 <style scoped>
@@ -82,7 +102,7 @@ onUnmounted(() => {
   flex-direction: column;
   height: 100%;
   min-height: 600px;
-  background: #f0f2f5;
+  background: var(--el-bg-color-page);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
@@ -93,8 +113,8 @@ onUnmounted(() => {
   align-items: center;
   justify-content: space-between;
   padding: 10px 16px;
-  background: #fff;
-  border-bottom: 1px solid #e8eaed;
+  background: var(--el-bg-color);
+  border-bottom: 1px solid var(--el-border-color-light);
   flex-shrink: 0;
 }
 
@@ -109,8 +129,8 @@ onUnmounted(() => {
 
 .designer-icon svg { width: 18px; height: 18px; }
 
-.designer-title { font-size: 15px; font-weight: 700; color: #1a1a2e; }
-.designer-subtitle { font-size: 11px; color: #8c8c8c; margin-top: 1px; }
+.designer-title { font-size: 15px; font-weight: 700; color: var(--el-text-color-primary); }
+.designer-subtitle { font-size: 11px; color: var(--el-text-color-secondary); margin-top: 1px; }
 .header-actions { display: flex; align-items: center; gap: 8px; }
 .token-count-header { font-family: 'Courier New', monospace; }
 
