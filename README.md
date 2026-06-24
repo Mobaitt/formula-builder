@@ -17,7 +17,6 @@ npm install formula-builder element-plus vue
 ```vue
 <script setup lang="ts">
 import FormulaDesigner from 'formula-builder'
-import 'formula-builder/dist/style.css'
 import type { DeviceNode } from 'formula-builder'
 
 // 可选：自定义变量设备树（不传则使用内置示例数据）
@@ -53,7 +52,6 @@ const devices: DeviceNode[] = [
 ```vue
 <script setup lang="ts">
 import FormulaDesigner from 'formula-builder'
-import 'formula-builder/dist/style.css'
 import type { VariableItem } from 'formula-builder'
 
 const variables: VariableItem[] = [

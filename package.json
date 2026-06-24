@@ -4,7 +4,14 @@
   "version": "1.0.2",
   "type": "module",
   "description": "A low-code formula editor for Vue 3 — token-based, drag & drop, extensible.",
-  "keywords": ["vue3", "formula", "editor", "low-code", "token", "element-plus"],
+  "keywords": [
+    "vue3",
+    "formula",
+    "editor",
+    "low-code",
+    "token",
+    "element-plus"
+  ],
   "license": "MIT",
   "author": "",
   "repository": {
@@ -14,14 +21,15 @@
   "main": "dist/formula-builder.umd.cjs",
   "module": "dist/formula-builder.js",
   "types": "dist/entry/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "import": "./dist/formula-builder.js",
       "require": "./dist/formula-builder.umd.cjs",
       "types": "./dist/entry/index.d.ts"
-    },
-    "./dist/style.css": "./dist/formula-builder.css"
+    }
   },
   "scripts": {
     "dev": "vite",
@@ -38,6 +46,7 @@
     "@vue/tsconfig": "^0.9.1",
     "typescript": "~6.0.2",
     "vite": "^8.1.0",
+    "vite-plugin-css-injected-by-js": "^5.0.1",
     "vue-tsc": "^3.3.5"
   },
   "peerDependencies": {
