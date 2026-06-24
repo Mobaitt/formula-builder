@@ -1,7 +1,7 @@
 {
   "name": "formula-builder",
   "private": false,
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "description": "A low-code formula editor for Vue 3 — token-based, drag & drop, extensible.",
   "keywords": [
@@ -37,8 +37,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "element-plus": "^2.14.2",
-    "vue": "^3.5.38"
+    "element-plus": "^2.x",
+    "vue": "^3.x"
   },
   "devDependencies": {
     "@types/node": "^24.13.2",
@@ -46,7 +46,6 @@
     "@vue/tsconfig": "^0.9.1",
     "typescript": "~6.0.2",
     "vite": "^8.1.0",
-    "vite-plugin-css-injected-by-js": "^5.0.1",
     "vue-tsc": "^3.3.5"
   },
   "peerDependencies": {
